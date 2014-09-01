@@ -1,0 +1,198 @@
+\documentclass[11pt]{report}
+
+
+%%%% Package %%%%
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=2cm]{geometry}
+\usepackage{pdflscape}
+\usepackage[bottom]{footmisc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb} 
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage{color}
+\usepackage[separate-uncertainty = true]{siunitx}
+\usepackage{titlesec}
+\usepackage{datatool}
+\usepackage{fancybox}
+\usepackage [colorinlistoftodos]{todonotes}
+\usepackage{geometry}
+\usepackage{qtree}
+\usepackage{hyperref}
+
+%%% Nouvelles commandes et nouveaux environnements %%%
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newenvironment{ligneBox}[2]
+{\begin{minipage}{#1} \hrulefill ~\raisebox{-0.4ex}{#2}~\hrulefill\par\smallskip}
+{\par\hrulefill \end{minipage}}
+
+\newenvironment{cadreBox}[3]
+{\boxput*(0 ,1){
+\colorbox{white}{#1}
+}{
+\setlength{\fboxsep}{6pt}
+
+\shadowbox{\begin{minipage}{#2}
+\mbox{} \\
+#3
+\end{minipage}}
+\setlength{\shadowsize}{2 pt}
+}}
+{}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page de garde %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+\hbox to \hsize{%
+\vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+\hbox to \hsize{%
+\rlap{\vtop{\raggedright #1}}%
+\hss
+\clap{\vtop{\centering #2}}%
+\hss
+\llap{\vtop{\raggedleft #3}}}}%
+\def\bas#1#2#3{%
+\hbox to \hsize{%
+\rlap{\vbox{\raggedright #1}}%
+\hss
+\clap{\vbox{\centering #2}}%
+\hss
+\llap{\vbox{\raggedleft #3}}}}%
+\def\maketitle{%
+\thispagestyle{empty}\vbox to \vsize{%
+\haut{}{\@blurb}{}
+\vfill
+\vspace{1cm}
+\begin{flushleft}
+\usefont{OT1}{ptm}{m}{n}
+\huge \@title
+\end{flushleft}
+\par
+\hrule height 4pt
+\par
+\begin{flushright}
+\usefont{OT1}{phv}{m}{n}
+\Large \@author
+\par
+\end{flushright}
+\vspace{1cm}
+\vfill
+\vfill
+\bas{}{\@location, \@date}{}
+}%
+\cleardoublepage
+}
+\def\date#1{\def\@date{#1}}
+\def\author#1{\def\@author{#1}}
+\def\title#1{\def\@title{#1}}
+\def\location#1{\def\@location{#1}}
+\def\blurb#1{\def\@blurb{#1}}
+\date{le 23 mars 2014}
+\author{}
+\title{}
+\location{Bruxelles}\blurb{}
+\makeatother
+\title{\center{Mémoire de fin d'étude}}
+\author{William-James \textsc{Kettlewell}}
+\location{Bruxelles}
+\blurb{%
+Université Libre de Bruxelles\\
+�cole Polytechnique de Bruxelles\\
+\textbf{PROJ-H-400}\\[1em]
+Professeurs titulaires : Dubus Alain, Labeau Pierre-Etienne
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fin page de garde %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\tableofcontents
+%
+%\chapter*{Introduction}
+%	\addcontentsline{toc}{chapter}{Introduction}
+%
+%
+%\begin{figure}[ht!]
+%  	\centering
+%\includegraphics[scale=0.55]{}                
+%	\caption{}
+%	\label{}
+%\end{figure}
+%
+%\newgeometry{left=0.5cm,bottom=1.8cm, right = 0.5cm, top = 1.5cm}
+%
+%\begin{landscape}
+%\parbox[c][\textwidth][s]{\linewidth}{%
+%\vfill
+%\fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{}}
+%\captionof{figure}{}
+%\label{}
+%\vfill
+%}
+%\end{landscape}
+%
+%\begin{landscape}
+%\parbox[c][\textwidth][s]{\linewidth}{%
+%\vfill
+%\fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{}}
+%\captionof{figure}{}
+%\label{}
+%\vfill
+%}
+%\end{landscape}
+%
+%\restoregeometry
+
+%\begin{ligneBox}{15.5cm}{ \textbf{} }%%%%%%%%%%%%%%%%% ligne
+%
+
+%
+%\includegraphics[scale=0.7]{}
+%\captionof{figure}{}
+%
+%
+
+%\end{ligneBox} %%%%%%%%%%%%%%%% ligne
+%\mbox{}\\
+%\  \\
+
+
+
+%\newgeometry{left=5 cm, bottom=2cm, right = 5cm, top = 1 cm}
+%\begin{landscape}
+%\begin{figure}[!ht]
+%	\begin{center}
+%	\includegraphics[scale=1.3]{}
+%	\end{center}
+%	\caption{}
+%	\label{}
+%\end{figure}
+%\end{landscape}
+%\restoregeometry
+
+%
+%
+%\bibliographystyle{unsrt}
+%\bibliography{biblio_PA}
+%\addcontentsline{toc}{chapter}{Bibliographie}
+%\appendix
+
+\end{itemize}
+\end{document}
